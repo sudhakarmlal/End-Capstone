@@ -171,7 +171,7 @@ The Data preprocessing would be required to generated pair of "English-Python" t
       'NEWLINE']}
       
 
-## 6. Model Architecture
+## 5. Model Architecture
 
 The Model used is **transformers with self-attention, multi-head, and scaled-dot product attention**
 
@@ -192,6 +192,34 @@ the older models, we used an multi-layered LSTM as the encoder and decoder.
 One downside of the previous model is that the decoder is trying to cram lots of information into the hidden states. Whilst decoding, the hidden state will need to contain information about the whole of the source sequence, as well as all of the tokens have been decoded so far. By alleviating some of this information compression, we can create a better model!
 
 We'll also be using a GRU (Gated Recurrent Unit) instead of an LSTM (Long Short-Term Memory). Why? Mainly because that's what they did in the paper (this paper also introduced GRUs) and also because we used LSTMs last time. To understand how GRUs (and LSTMs) differ from standard RNNS, check out [this](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) link. Is a GRU better than an LSTM? [Research](https://arxiv.org/abs/1412.3555) has shown they're pretty much the same, and both are better than standard RNNs. 
+
+
+## 6. Evaluation Metric
+The model is used to acheive the perplexity.The perplexity is used as the evaluation metric.
+
+We acheived a test perplexity of **2.202**
+
+
+## 7.Model Prediction
+
+Now that the transformer model is trained.We would be using the model to predict the python code generated in case an "English Text" is given as input to the Model
+
+Also the python code generated is in the form of tokens.This has to further formatted to generate appropriate python code.
+
+
+A python intepreter has to be used to run the generated python code to verify if its working
+
+
+
+## 8. Sample Python code generation
+
+   
+
+## 9. Python code formatter.
+
+## 10. Running it thru python interpreter
+
+
 
 
 
