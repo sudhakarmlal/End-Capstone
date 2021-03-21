@@ -37,3 +37,30 @@ Sample python program would look like
     else:
       largest = num3
     print(f'largest:{largest}')
+
+## 2. Data Cleaning
+
+As a part of data preparation,data cleaning is pretty important.The cleaned data would later be preprocessed and fed to the transformer model. 
+
+####  **Data Cleaning Strategy:**
+The DataCleaning procedure was **manual** for the following Strategy is followed for data cleaning
+
+    1.The complete Engilsh Text that describes the python code is kept in one line.
+    In case in some of the english texts in the dataset if it is in two lines it is brought to one line.
+
+    This has to be done to identify English text of the pair of English-Python to be fed to the transformer model 
+
+    2.The python code is placed in the very next line.
+     For any of the python code if there is a space in between the
+    "English text" and the "Python code" the space is removed.
+    This space is removed.
+
+    Again this has to be done to identify the Python code of the pair of   
+    English-Python code to be fed to the transformer model
+
+    3.The in between spaces and comments in the python code has to be 
+      removed so that the model doesn't learn any unncessary stuff e.g 
+      redundant new lines or #comments(in between code)  for the python 
+      code generated   
+
+
