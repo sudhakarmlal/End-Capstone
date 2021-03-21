@@ -64,3 +64,111 @@ The DataCleaning procedure was **manual** for the following Strategy is followed
       code generated   
 
 
+## 4.Data Preparation/Preprocessing
+
+The Data preprocessing would be required to generated pair of "English-Python" to be fed to the transformer model.Special Care is taken for the following:
+
+     1.All the python code in the generated pair out of the raw dataset
+      (of course cleaned with the steps mentioned above) is having proper indentations,spaces/tabs,new line characters .
+
+    2.Special care is taken to generate a workable python code by handling indentations,"," , ":", tabs,new line characters.
+
+
+    3.Python tokenizer is used to generate tokens from the python code.
+    Note:Separate tokens are taken for the following:
+
+      a)COMMENT
+
+      b)ENCODING
+
+      c)INDENT
+
+      d)DEDENT
+
+      e)NEWLINE
+
+      f)ENDMARKER 
+
+
+      The following code is used to consider the above as separate tokens while tokenizing python code into tokens
+
+      try:
+        tokens = tokenize.tokenize(io.BytesIO(text.encode('utf-8')).readline)
+        for five_tuple in tokens:
+            if five_tuple.type == tokenize.COMMENT:
+                continue
+            elif five_tuple.type == tokenize.ENCODING:
+                continue
+            elif five_tuple.type == tokenize.INDENT:
+                python_token_list.append("INDENT")
+            elif five_tuple.type == tokenize.DEDENT:
+                python_token_list.append("DEDENT")
+            elif five_tuple.type == tokenize.NL or five_tuple.type == tokenize.NEWLINE:
+                python_token_list.append("NEWLINE")
+            elif five_tuple.type == tokenize.ENDMARKER :
+                continue
+            else:
+                python_token_list.append(five_tuple.string)
+    except Exception:
+        raised_exception = True
+
+
+      4.The spacy tokenizer is used to generate tokens for English text
+
+      5.The python tokenizer with special handling of the tokens (explained in Item3 above) is used to generate tokens out of the python 
+      code.
+
+      6.A dataframe is formed out of The spacy tokens from English text and python tokens  from Python code.
+
+      7.The dataframe from Item6 above is used as an input to the model
+
+      8.Below is the sample python tokens  generated out of python tokenizer:
+
+      {'English': ['count', 'tuple', 'elements', 'inside', 'list'],
+      'Python': ['random',
+       '=',
+       '[',
+       "'a'",
+       ',',
+       '(',
+       "'a'",
+       ',',
+       "'b'",
+       ')',
+       ',',
+       '(',
+       "'a'",
+        ',',
+       "'b'",
+       ')',
+       ',',
+      '[',
+      '3',
+      ',',
+      '4',
+      ']',
+      ']',
+      'NEWLINE',
+      'count',
+      '=',
+     'random',
+      '.',
+     'count',
+     '(',
+     '(',
+     "'a'",
+     ',',
+     "'b'",
+     ')',
+     ')',
+     'NEWLINE',
+     'print',
+     '(',
+        '"The count of (\'a\', \'b\') is:"',
+      ',',
+      'count',
+     ')',
+      'NEWLINE']}
+
+
+
