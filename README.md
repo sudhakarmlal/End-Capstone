@@ -282,7 +282,7 @@ A python intepreter has to be used to run the generated python code to verify if
 
 https://github.com/sudhakarmlal/End-Capstone/blob/main/25_Python_Generated_Code
 
-### 12.Also output of python intepretor used to run the 25 .py files can be found at
+## 12.Also output of python intepretor used to run the 25 .py files can be found at
 
 
 
