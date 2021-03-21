@@ -64,7 +64,7 @@ The DataCleaning procedure was **manual** for the following Strategy is followed
       code generated   
 
 
-## 4.Data Preparation/Preprocessing
+## 3.Data Preparation/Preprocessing
 
 The Data preprocessing would be required to generated pair of "English-Python" to be fed to the transformer model.Special Care is taken for the following:
 
@@ -169,6 +169,30 @@ The Data preprocessing would be required to generated pair of "English-Python" t
       'count',
      ')',
       'NEWLINE']}
+      
+      ## 6. Model Architecture
+
+
+The Model used is **transformers with self-attention, multi-head, and scaled-dot product attention**
+
+The model is implemented from [Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation](https://arxiv.org/abs/1406.1078). This model will achieve improved test perplexity whilst only using a single layer RNN in both the encoder and the decoder.
+
+## Introduction
+
+The general encoder-decoder model.
+
+![](https://github.com/bentrevett/pytorch-seq2seq/blob/master/assets/seq2seq1.png?raw=1)
+
+We use our encoder (green) over the embedded source sequence (yellow) to create a context vector (red). We then use that context vector with the decoder (blue) and a linear layer (purple) to generate the target sentence.
+
+the older models, we used an multi-layered LSTM as the encoder and decoder.
+
+![](https://github.com/bentrevett/pytorch-seq2seq/blob/master/assets/seq2seq4.png?raw=1)
+
+One downside of the previous model is that the decoder is trying to cram lots of information into the hidden states. Whilst decoding, the hidden state will need to contain information about the whole of the source sequence, as well as all of the tokens have been decoded so far. By alleviating some of this information compression, we can create a better model!
+
+We'll also be using a GRU (Gated Recurrent Unit) instead of an LSTM (Long Short-Term Memory). Why? Mainly because that's what they did in the paper (this paper also introduced GRUs) and also because we used LSTMs last time. To understand how GRUs (and LSTMs) differ from standard RNNS, check out [this](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) link. Is a GRU better than an LSTM? [Research](https://arxiv.org/abs/1412.3555) has shown they're pretty much the same, and both are better than standard RNNs. 
+
 
 
 
