@@ -225,41 +225,33 @@ A python intepreter has to be used to run the generated python code to verify if
 
 ## 9. Python code formatter.
 
-   import tokenize
-   def format_to_python_code(list_tokens):
-      final_list = []
-      for i in range(len(list_tokens)):
-        #print(list_test2_mod[i],list_test2_mod[i] == 'NEWLINE')
-       #final_list.append(list_test2_mod[i])
-        if i > 0:
-            if i+1 < len(list_tokens) and list_tokens[i-1] != 'NEWLINE':
-              #print(list_test_mod[i],(list_test_mod[i+1] == 'NEWLINE'))
-             p = i -1
-            if list_tokens[i] != 'NEWLINE' and list_tokens[p] != 'NEWLINE' and  list_tokens[i] != 'INDENT' and  list_tokens[p] != 'INDENT':
-              print("the lsit mode",list_tokens[i])
-            if list_tokens[i] == 'ininches':
-            print(list_tokens[p],list_tokens[p] == 'INDENT')
-            final_list.append(' ')
-       #if list_test2_mod[i] == tokenize.COMMENT:
-                #continue
-       #elif list_test2_mod[i] == tokenize.ENCODING:
-                #continue
-        if list_tokens[i] == 'INDENT':
+     import tokenize
+     def format_to_python_code(list_tokens):
+        final_list = []
+        for i in range(len(list_tokens)):
+          print(list_test2_mod[i],list_test2_mod[i] == 'NEWLINE')
+          final_list.append(list_test2_mod[i])
+          if i > 0:
+              if i+1 < len(list_tokens) and list_tokens[i-1] != 'NEWLINE':
+              p = i -1
+              if list_tokens[i] != 'NEWLINE' and list_tokens[p] != 'NEWLINE' and  list_tokens[i] != 'INDENT' and  list_tokens[p] != 'INDENT':
+              if list_tokens[i] == 'ininches':
+              print(list_tokens[p],list_tokens[p] == 'INDENT')
+              final_list.append(' ')
+            if list_tokens[i] == 'INDENT':
                   final_list.append("  ")
-        elif list_tokens[i] == 'DEDENT':
+            elif list_tokens[i] == 'DEDENT':
                 #final_list.append(' ')
                   continue
-         elif list_tokens[i] == 'NEWLINE':
+            elif list_tokens[i] == 'NEWLINE':
                   print("Adding new line")
                   final_list.append("\n")
-        elif list_tokens[i] == 'return':
-          final_list.append("  "+list_tokens[i])              
+             elif list_tokens[i] == 'return':
+            final_list.append("  "+list_tokens[i])              
          else:
            final_list.append(list_tokens[i])
 
-        #elif list_test2_mod[i] == tokenize.ENDMARKER :
-                #continue
-
+        
         return final_list
   
    ##### The following code is used to generate output:
