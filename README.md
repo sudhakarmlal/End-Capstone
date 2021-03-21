@@ -213,7 +213,7 @@ A python intepreter has to be used to run the generated python code to verify if
 
 ## 8. Sample Python code generation
 
-    Below is the code to predict the python code generated out of the model:
+  #### Below is the code to predict the python code generated out of the model:
     
     translation, attention = translate_sentence(src, SRC, TRG, model, device)
 
@@ -225,66 +225,66 @@ A python intepreter has to be used to run the generated python code to verify if
 
 ## 9. Python code formatter.
 
-import tokenize
-def format_to_python_code(list_tokens):
-  final_list = []
-  for i in range(len(list_tokens)):
-  #print(list_test2_mod[i],list_test2_mod[i] == 'NEWLINE')
-  #final_list.append(list_test2_mod[i])
-    if i > 0:
-      if i+1 < len(list_tokens) and list_tokens[i-1] != 'NEWLINE':
-      #print(list_test_mod[i],(list_test_mod[i+1] == 'NEWLINE'))
-        p = i -1
-        if list_tokens[i] != 'NEWLINE' and list_tokens[p] != 'NEWLINE' and  list_tokens[i] != 'INDENT' and  list_tokens[p] != 'INDENT':
-          print("the lsit mode",list_tokens[i])
-          if list_tokens[i] == 'ininches':
+   import tokenize
+   def format_to_python_code(list_tokens):
+      final_list = []
+      for i in range(len(list_tokens)):
+        #print(list_test2_mod[i],list_test2_mod[i] == 'NEWLINE')
+       #final_list.append(list_test2_mod[i])
+        if i > 0:
+            if i+1 < len(list_tokens) and list_tokens[i-1] != 'NEWLINE':
+              #print(list_test_mod[i],(list_test_mod[i+1] == 'NEWLINE'))
+             p = i -1
+            if list_tokens[i] != 'NEWLINE' and list_tokens[p] != 'NEWLINE' and  list_tokens[i] != 'INDENT' and  list_tokens[p] != 'INDENT':
+              print("the lsit mode",list_tokens[i])
+            if list_tokens[i] == 'ininches':
             print(list_tokens[p],list_tokens[p] == 'INDENT')
             final_list.append(' ')
-  #if list_test2_mod[i] == tokenize.COMMENT:
+       #if list_test2_mod[i] == tokenize.COMMENT:
                 #continue
-  #elif list_test2_mod[i] == tokenize.ENCODING:
+       #elif list_test2_mod[i] == tokenize.ENCODING:
                 #continue
-    if list_tokens[i] == 'INDENT':
+        if list_tokens[i] == 'INDENT':
                   final_list.append("  ")
-    elif list_tokens[i] == 'DEDENT':
+        elif list_tokens[i] == 'DEDENT':
                 #final_list.append(' ')
                   continue
-    elif list_tokens[i] == 'NEWLINE':
+         elif list_tokens[i] == 'NEWLINE':
                   print("Adding new line")
                   final_list.append("\n")
-    elif list_tokens[i] == 'return':
-      final_list.append("  "+list_tokens[i])              
-    else:
-      final_list.append(list_tokens[i])
+        elif list_tokens[i] == 'return':
+          final_list.append("  "+list_tokens[i])              
+         else:
+           final_list.append(list_tokens[i])
 
-  #elif list_test2_mod[i] == tokenize.ENDMARKER :
+        #elif list_test2_mod[i] == tokenize.ENDMARKER :
                 #continue
 
-  return final_list
+        return final_list
   
-  The following code is used to generate output:
+   ##### The following code is used to generate output:
   
-  file1 = open("/content/gdrive/MyDrive/data/func_test.py","w")   
+       file1 = open("/content/gdrive/MyDrive/data/func_test.py","w")   
   
-  file1.writelines(format_to_python_code(list_test_mod)) 
-  file1.close() #to change file access modes 
+        file1.writelines(format_to_python_code(list_test_mod)) 
+       file1.close() #to change file access modes 
   
-  file1 = open("/content/gdrive/MyDrive/data/func_test.py","r+")  
+       file1 = open("/content/gdrive/MyDrive/data/func_test.py","r+")  
   
-  print ("Output of Read function is ")
-  print (file1.read()) 
-  print()
+        print ("Output of Read function is ")
+        print (file1.read()) 
+        print()
 
   
-  The output generated out of the code is:
-  defheight_into_cms(feet,inches):
-      ininches=feet*12+inches
-      return ininches*2.54
+  #### The output generated out of the code is:
+       defheight_into_cms(feet,inches):
+          ininches=feet*12+inches
+          return ininches*2.54
 
 ## 10. Running it thru python interpreter
-To run the code in python intepreter the following is used:
-import func_test
-func_test.height_into_cms(1,2)
+   ##### To run the code in python intepreter the following is used:
+      import func_test
+      func_test.height_into_cms(1,2)
 
 ## 11. 25 Example generated code running through the Python Intepreter.
 
