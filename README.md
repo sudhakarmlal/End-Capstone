@@ -170,8 +170,8 @@ The Data preprocessing would be required to generated pair of "English-Python" t
      ')',
       'NEWLINE']}
       
-      ## 6. Model Architecture
 
+## 6. Model Architecture
 
 The Model used is **transformers with self-attention, multi-head, and scaled-dot product attention**
 
