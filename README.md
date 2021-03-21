@@ -3,8 +3,6 @@
 
 The project is about  sequence-to-sequence models using PyTorch and TorchText, we'll be implementing the model
 
-## Steps followed to generate Python Code
-
 
 ## Steps followed to generate Python Code
 
